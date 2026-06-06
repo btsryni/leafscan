@@ -4,6 +4,7 @@ import '../theme/app_colors.dart';
 import '../models/detection_result.dart';
 import '../services/history_service.dart';
 import '../widgets/ambient_background.dart';
+import '../widgets/formatted_content_text.dart';
 
 /// Screen showing re-reviews of past coffee leaf scans, featuring direct delete shortcuts.
 class HistoryDetailScreen extends StatefulWidget {
@@ -36,6 +37,17 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
         return AppColors.warningBadge;
       default:
         return AppColors.virusBadge;
+    }
+  }
+
+  Color get _confidenceColor {
+    final score = widget.result.confidence;
+    if (score >= 85.0) {
+      return AppColors.healthyBadge;
+    } else if (score >= 50.0) {
+      return AppColors.warningBadge;
+    } else {
+      return AppColors.virusBadge;
     }
   }
 
@@ -213,7 +225,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w900,
-                                  color: _typeColor,
+                                  color: _confidenceColor,
                                 ),
                               ),
                             ],
@@ -291,14 +303,10 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 10),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 12.5,
-              height: 1.6,
-              color: AppColors.textPrimary,
-            ),
+          FormattedContentText(
+            content: content,
+            fontSize: 12.5,
+            height: 1.6,
           ),
         ],
       ),

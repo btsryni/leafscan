@@ -384,6 +384,15 @@ class HistoryScreenState extends State<HistoryScreen> {
       typeColor = AppColors.virusBadge;
     }
 
+    Color confidenceColor;
+    if (item.confidence >= 85.0) {
+      confidenceColor = AppColors.healthyBadge;
+    } else if (item.confidence >= 50.0) {
+      confidenceColor = AppColors.warningBadge;
+    } else {
+      confidenceColor = AppColors.virusBadge;
+    }
+
     return Dismissible(
       key: Key(item.id),
       direction: DismissDirection.endToStart,
@@ -480,11 +489,11 @@ class HistoryScreenState extends State<HistoryScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Akurasi: ${item.confidence.toStringAsFixed(1)}%',
+                          'Tingkat Kepercayaan AI: ${item.confidence.toStringAsFixed(1)}%',
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.bold,
-                            color: typeColor,
+                            color: confidenceColor,
                           ),
                         ),
                         const SizedBox(height: 2),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../models/detection_result.dart';
 import '../widgets/ambient_background.dart';
+import '../widgets/formatted_content_text.dart';
 
 /// Screen detailing specific coffee leaf diseases selected from Home.
 class DiseaseDetailScreen extends StatelessWidget {
@@ -143,7 +144,7 @@ class DiseaseDetailScreen extends StatelessWidget {
                         title: 'Penyebab Utama',
                         content: result.penyebab,
                         icon: Icons.bug_report_outlined,
-                        accentColor: AppColors.accentGreen,
+                        accentColor: AppColors.primary,
                       ),
                       const SizedBox(height: 12),
                       _buildDetailCard(
@@ -211,14 +212,10 @@ class DiseaseDetailScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 12.5,
-              height: 1.6,
-              color: AppColors.textPrimary,
-            ),
+          FormattedContentText(
+            content: content,
+            fontSize: 12.5,
+            height: 1.6,
           ),
         ],
       ),

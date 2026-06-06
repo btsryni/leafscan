@@ -44,8 +44,8 @@ class _SplashScreenState extends State<SplashScreen> {
               Color(0xFFE8F5E9),
               Color(0xFF0F8C3B),
             ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             stops: [0.0, 0.25, 0.5, 0.75, 1.0],
           ),
         ),
@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     const Text(
                       'Teman pintar untuk merawat tanaman kopimu',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         color: Color(0xFF097E32),
                         fontWeight: FontWeight.bold,
                         height: 1.4,

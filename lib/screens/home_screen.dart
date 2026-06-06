@@ -159,12 +159,12 @@ class HomeScreen extends StatelessWidget {
               width: 165,
               margin: const EdgeInsets.only(right: 14),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: AppColors.cardSurface,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFFF1F5F9), width: 1.2),
+                border: Border.all(color: AppColors.border, width: 0.8),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
+                    color: Colors.black.withValues(alpha: 0.02),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -200,13 +200,13 @@ class HomeScreen extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                     decoration: const BoxDecoration(
-                      color: Color(0xFFF8FAFC),
+                      color: AppColors.lightGreen,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),
                       border: Border(
-                        top: BorderSide(color: Color(0xFFF1F5F9), width: 1.0),
+                        top: BorderSide(color: AppColors.border, width: 0.8),
                       ),
                     ),
                     child: Text(
@@ -215,7 +215,7 @@ class HomeScreen extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
+                        color: AppColors.primary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

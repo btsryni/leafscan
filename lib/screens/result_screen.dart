@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../models/detection_result.dart';
 import '../widgets/ambient_background.dart';
+import '../widgets/formatted_content_text.dart';
 import '../services/history_service.dart';
 
 /// Screen displaying interactive circular gauge, result metrics, and penanganan solutions.
@@ -67,13 +68,13 @@ class _ResultScreenState extends State<ResultScreen>
   }
 
   Color get _typeColor {
-    switch (widget.result.diseaseType) {
-      case 'Sehat':
-        return AppColors.healthyBadge;
-      case 'Jamur':
-        return AppColors.warningBadge;
-      default:
-        return AppColors.virusBadge;
+    final score = widget.result.confidence;
+    if (score >= 85.0) {
+      return AppColors.healthyBadge;
+    } else if (score >= 50.0) {
+      return AppColors.warningBadge;
+    } else {
+      return AppColors.virusBadge;
     }
   }
 
@@ -202,7 +203,7 @@ class _ResultScreenState extends State<ResultScreen>
                           ),
                           IconButton(
                             icon: Icon(
-                              _isSaved ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                              _isSaved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
                               color: AppColors.primary,
                               size: 28,
                             ),
@@ -217,13 +218,13 @@ class _ResultScreenState extends State<ResultScreen>
                                 messenger.showSnackBar(
                                   SnackBar(
                                     content: const Text(
-                                      'Hasil deteksi dihapus dari favorit & riwayat!',
+                                      'Hasil deteksi dihapus dari riwayat',
                                       style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold),
                                     ),
                                     backgroundColor: AppColors.primary,
                                     behavior: SnackBarBehavior.floating,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                    duration: const Duration(seconds: 1),
+                                    duration: const Duration(seconds: 2),
                                   ),
                                 );
                               } else {
@@ -234,13 +235,13 @@ class _ResultScreenState extends State<ResultScreen>
                                 messenger.showSnackBar(
                                   SnackBar(
                                     content: const Text(
-                                      'Hasil deteksi disimpan ke favorit & riwayat!',
+                                      'Hasil deteksi disimpan ke halaman riwayat',
                                       style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold),
                                     ),
                                     backgroundColor: AppColors.primary,
                                     behavior: SnackBarBehavior.floating,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                    duration: const Duration(seconds: 1),
+                                    duration: const Duration(seconds: 2),
                                   ),
                                 );
                               }
@@ -345,13 +346,10 @@ class _ResultScreenState extends State<ResultScreen>
             ],
           ),
           const SizedBox(height: 8),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 12,
-              height: 1.5,
-              color: AppColors.textPrimary,
-            ),
+          FormattedContentText(
+            content: content,
+            fontSize: 12.0,
+            height: 1.5,
           ),
         ],
       ),

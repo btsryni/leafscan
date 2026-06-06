@@ -12,7 +12,7 @@ class PanduanScreen extends StatelessWidget {
       (
         '1',
         'Buka Fitur Analisis',
-        'Arahkan ke menu analisis yang terletak di bagian tengah bawah screen dengan ikon daun hijau.'
+        'Arahkan ke menu analisis yang terletak di bagian tengah bawah screen dengan ikon scan.'
       ),
       (
         '2',
@@ -26,7 +26,7 @@ class PanduanScreen extends StatelessWidget {
       ),
       (
         '4',
-        'Proses Analisis Otomatis',
+        'Klik Button Analisis Penyakit',
         'Sistem kecerdasan buatan (AI) kami akan secara otomatis memproses dan mencocokkan gambar daun kopi yang Anda unggah.'
       ),
       (

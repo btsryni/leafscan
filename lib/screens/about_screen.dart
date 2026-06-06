@@ -22,7 +22,7 @@ class AboutScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: Container(
-                        padding: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(6),
                         decoration: const BoxDecoration(
                           color: AppColors.primary,
                           shape: BoxShape.circle,
@@ -30,7 +30,7 @@ class AboutScreen extends StatelessWidget {
                         child: const Icon(
                           Icons.arrow_back_rounded,
                           color: Colors.white,
-                          size: 20,
+                          size: 16,
                         ),
                       ),
                     ),
