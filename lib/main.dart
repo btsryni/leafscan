@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'theme/app_theme.dart';
 import 'screens/splash_screen.dart';
 import 'screens/main_shell.dart';
@@ -13,11 +12,8 @@ void main() async {
   final historyService = HistoryService();
   await historyService.init();
 
-  // Read onboarding complete flags from local storage cache
-  final prefs = await SharedPreferences.getInstance();
-  final showOnboarding = !(prefs.getBool('leafscan_onboarding_done') ?? false);
-
-  runApp(MyApp(showOnboarding: showOnboarding));
+  // Always show splash screen on app launch
+  runApp(const MyApp(showOnboarding: true));
 }
 
 class MyApp extends StatefulWidget {
